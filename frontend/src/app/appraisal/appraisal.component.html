@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col s12">
+    <h3 class="text-xs-center" style="text-align:center;background-image: linear-gradient(to right, #000000,#0066cc,#66b3ff); font-size: 100px;
+  margin-left: 20px;margin-right: 20px;position: relative; color: white;font-family:URW Chancery L, cursive; height: 180px; margin-top: 0px;padding-right: 15px; margin-bottom: 0px;">
+      <marquee >
+    Employee Appraisal Management System</marquee>
+  
+
+  </h3>
+  <br>
+  <br>
+    <div class="card" style="background-color: #000000">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <details>
+              <summary style ="font-size: 30px;font-weight:bold;font-family: fantasy;color: #FFFFFF;">Add New Employee</summary>
+            <form #appraisalForm="ngForm" (ngSubmit)="onSubmit(appraisalForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="appraisalService.selectedAppraisal._id">
+              <h3 class="red-text" style="font-size: 20px;">* Required</h3>
+              <br>
+              <br>
+              <div class="row">
+                <div class="input-field col s10">
+                  <input type="number" min="1" max="500" name="EmployeeID" #name="ngModel" [(ngModel)]="appraisalService.selectedAppraisal.EmployeeID" placeholder="Enter the Employee ID" required>
+                  <label style ="font-size: 30px;font-weight:bold;font-family: fantasy;color: #FFFFFF;">Employee ID :
+                    <label style="font-size: 30px;" class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+                  <input type="text" name="Name" #name="ngModel" [(ngModel)]="appraisalService.selectedAppraisal.Name" placeholder="Enter the full name" required>
+                  <p></p>
+                  <label style ="font-weight:bold;font-family: fantasy;font-size: 30px;color: #FFFFFF;">Name :
+                    <label style="font-size: 30px;" class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+                  <input type="text" name="Department" #name="ngModel" [(ngModel)]="appraisalService.selectedAppraisal.Department" placeholder="Eg : Advertising" required>
+                  <label style ="font-weight:bold;font-family: fantasy;font-size: 30px;color: #FFFFFF;">Department :
+                  <label style="font-size: 30px;" class="red-text">*</label>
+                </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+                  <input type="text" name="Comments" #name="ngModel" [(ngModel)]="appraisalService.selectedAppraisal.Comments" placeholder="">
+                  <label style ="font-weight:bold;font-family: fantasy;font-size: 30px;color: #FFFFFF;">Additional Comments :
+                  <label style="font-size: 30px;" class="red-text"></label>
+                </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+                  <input type="number" min="1" max="5" name="Rating" #name="ngModel" [(ngModel)]="appraisalService.selectedAppraisal.Rating" placeholder="Please enter your rating between 1-5, 5 being the highest" required>
+                  <label style ="font-weight:bold;font-family: fantasy;font-size: 30px;color: #FFFFFF;">Rating :
+                  <label style="font-size: 30px;" class="red-text">*</label>
+                </label>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="input-field col s10">
+                  <button style="background-color: #b30000; font-size: 25px;font-family: fantasy;" class="btn btn-custom right" type="button" (click)="resetForm(appraisalForm)">Reset</button>
+                  <button style="font-family: fantasy;background-color: #00cc00;font-size: 25px;" class="btn btn-custom right" type="submit">Submit</button>
+                </div>
+              </div>
+            </form> </details>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight" border = "5" >
+                  <thead>
+                    <tr>
+                      <th style="text-align:center; font-size: 25px;">  ID</th>
+                      <th style="text-align:center; font-size: 25px;">  Name</th>
+                      <th style="text-align:center; font-size: 25px;">  Department</th>
+                      <th style="text-align:center; font-size: 25px;">  Rating</th>
+                      <th style="text-align:center; font-size: 25px;">  Update</th>
+                      <th style="text-align:center; font-size: 25px;">  Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let app of appraisalService.appraisals">
+                    <td style="text-align:center; color: white; font-size: 25px;" >{{app.EmployeeID}}</td>
+                    <td style="text-align:center ;font-size: 25px;">{{app.Name}}</td>
+                    <td style="text-align:center; font-size: 25px;">{{app.Department}}</td>
+                    <td style="text-align:center; font-size: 25px;">{{app.Rating}}</td>
+                    
+                    <td>
+                        <a class="action-btn" (click)="onEdit(app)" >
+                          <i class="material-icons">edit</i>
+                        </a>
+                        </td>
+                      <td>
+                        <a class="action-btn" (click)="onDelete(app._id,appraisalForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </tbody>
+
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
