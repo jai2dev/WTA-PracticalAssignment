@@ -1,4 +1,4 @@
-# WTA-PracticalAssignment
+# WTA-PracticalAssignment - Employee management app
 
 Instructions to Run:
 
